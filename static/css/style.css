@@ -1,0 +1,94 @@
+body{
+	background: #F5F5F5;
+}
+.cl{
+	display: none;
+}
+.chart-card.mdl-card {
+  width: 80vw;
+  height: 90vh;
+}
+.chart{
+	width: 80vw;
+	height: 90vh;
+}
+.chart-full{
+	width: 98.5vw;
+	height: 90vh;
+}
+.chart-card-home.mdl-card {
+  width: 98.5vw;
+  height: 90vh;
+}
+.actions-card.mdl-card{
+	overflow: visible;
+	width :17vw;
+	margin-left: -1.5vh;
+	height: 70vh;
+}
+.actions-card > .mdl-card__title {
+  color: #000;
+  height: 6vh; 
+}
+.control-form{
+	margin: 2vh;
+	height: 40vh;
+	width: 15vw;
+	display: block;
+}
+.control-form-input{
+	width: 5vw;
+	margin: 0.5vw;
+}
+.control-form-button{
+	position: absolute;
+	bottom: 1vh;
+	left: 1vw;
+	margin-bottom: 1vh;
+}
+.checkbox-label{
+	margin: 0.5vw;
+}
+.control-form-input.full{
+	width:12vw;
+}
+.control-form-select{
+	width: 4.8vw; 
+	font-size: 1vh;
+}
+.custom-sized-icon{
+	font-size: 4vh;
+}
+.param-title{
+	font-size: 2vh;
+}
+.param-checkboxed{
+	margin-bottom: 1vh;
+}
+.loader{
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	position: absolute;
+	margin:auto;
+	z-index: 999;
+}
+.mdl-layout {
+	align-items: center;
+	justify-content: center;
+}
+
+.logo-div{
+	z-index: 999;
+}
+.download-actions-card.mdl-card{
+	overflow: visible;
+	width :17vw;
+	margin-left: -1.5vh;
+	height: 50vh;
+}
+.download-actions-card > .mdl-card__title {
+  color: #000;
+  height: 6vh; 
+}

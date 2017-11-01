@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="static/css/material.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/mdl-selectfield.min.css">
+    <title>Battery Life Test</title>
+    <script src="static/js/plotly-latest.min.js"></script>
+    <script type = "text/javascript" src = "static/js/material.min.js"></script>
+    <script type = "text/javascript" src = "static/js/jquery-3.2.1.min.js"></script>
+    <script type = "text/javascript" src = "static/js/mdl-selectfield.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+</head>
+<body>
+<div class="loader mdl-spinner mdl-js-spinner" id = "spinner"></div>
+    <!--    <a href="/logout">Logout</a> -->
+    <div id="ds" class="cl">{{data}}</div>
+
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title">Power Data of All Batteries</span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation. We hide it in small screens. -->
+                <nav class="mdl-navigation mdl-layout--large-screen-only">
+                    <!-- <a class="mdl-navigation__link" href="/logout">Logout</a> -->                    
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">
+                <img src="static/images/logo.png" height="61" width="109">
+            </span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="/">Overview</a>
+                <a class="mdl-navigation__link" href="/perBatteryData">Per Battery Data</a>
+                <a class="mdl-navigation__link" href="/predictLife">Regression Output</a>
+                <a class="mdl-navigation__link" href="/getRawData">Download Raw Data</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--10-col">
+                        <!-- Chart Card -->
+                        <div class="chart-card-home mdl-card mdl-shadow--2dp">
+                            <div id = "tester" class = "chart-full">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+<script type="text/javascript" >
+    function refresh(){
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/loadIMUData');
+        xhr.send(null);
+        xhr.onload = function(e){
+            console.log(xhr.response)
+            var re = JSON.parse(xhr.response);
+            Plotly.newPlot('tester', re['traces'], re['layout']);
+            setTimeout(refresh, 1000);
+        };
+    }
+setTimeout(refresh, 1000);
+</script>
+</html>
